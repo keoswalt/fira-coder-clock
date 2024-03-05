@@ -4,7 +4,7 @@ const militaryButton = document.getElementById("militaryButton");
 const standardButton = document.getElementById("standardButton");
 const timeCondensed = document.getElementsByClassName("timeCondensed")[0];
 const timeFull = document.getElementsByClassName("timeFull")[0];
-const session = document.getElementById("session");
+const timeOfDay = document.getElementById("session");
 
 let timeUpdateTimeout;
 
@@ -35,7 +35,7 @@ function standardTime() {
   let condensed = hh + ":" + mm;
 
   timeFull.innerText = time;
-  session.innerText = session;
+  timeOfDay.innerText = session;
   timeCondensed.innerText = condensed;
 
   timeUpdateTimeout = setTimeout(function () {
@@ -55,11 +55,6 @@ function militaryTime() {
   let hh = date.getHours();
   let mm = date.getMinutes();
   let ss = date.getSeconds();
-  let session = "AM";
-
-  if (hh > 12) {
-    session = "PM";
-  }
 
   hh = hh < 10 ? "0" + hh : hh;
   mm = mm < 10 ? "0" + mm : mm;
@@ -69,7 +64,6 @@ function militaryTime() {
   let condensed = hh + ":" + mm;
 
   timeFull.innerText = time;
-  session.innerText = session;
   timeCondensed.innerText = condensed;
 
   timeUpdateTimeout = setTimeout(function () {
@@ -83,12 +77,14 @@ const showStandard = function () {
   standardTime();
   militaryButton.style.display = "block";
   standardButton.style.display = "none";
+  session.style.display = "block";
 };
 
 const showMilitary = function () {
   militaryTime();
   militaryButton.style.display = "none";
   standardButton.style.display = "block";
+  session.style.display = "none";
 };
 
 militaryButton.addEventListener("click", showMilitary);
