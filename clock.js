@@ -27,6 +27,9 @@ function standardTime() {
     hh = hh - 12;
     session = "PM";
   }
+  if (hh == 12) {
+    session = "PM";
+  }
 
   mm = mm < 10 ? "0" + mm : mm;
   ss = ss < 10 ? "0" + ss : ss;
